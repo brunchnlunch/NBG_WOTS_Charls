@@ -1,0 +1,14 @@
+@(products: List[Product])(implicit flash: Flash, lang: Lang)
+@import play.api.Play.current
+@import play.api.i18n.Messages
+@import play.api.i18n.Messages.Implicits._
+@main(Messages("application.name")) {
+	<dl class="products">
+		@for(product <- products) {
+			<dt><a href="@controllers.routes.Products.show(product.ean)">@product.name</a></dt>
+			<dd>@product.volume</dd>
+			<dd>@product.quantity</dd>
+		}	
+	</dl>
+	<p><a href="@controllers.routes.Products.damagedProduct()" class="btn"><i class="icon-plus"></i></a></p>
+}
