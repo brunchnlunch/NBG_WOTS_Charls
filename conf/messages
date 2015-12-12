@@ -1,15 +1,33 @@
-application.name = Product catalog
+application.name = WOTS
 
+address = Address
+box = Box Type
+date = Date Placed
 ean = EAN
+location = Location
 name = Name
-description = Description
+quantity = Quantity
+status = Status
+volume = Volume
+
+order.details = Order: {0}
+order.packing = Pack Order
+order.picking = Pick Order
+
+orders.advance = Proceed to next stage
+orders.dispatch = Call Courier
+orders.get = Assign Order
+orders.list.navigation = Order List
+orders.rollback = Roll Back Status
+
 product.details = Product: {0}
 
-products.form = Product details
-products.list.navigation = Product List
 products.damaged = (Damaged)
 products.damaged.command = Report Damaged Stock
 products.damaged.submit = Report
-products.damaged.success = Successfully added product {0}.
-validation.errors = Please correct the errors in the form.
+products.damaged.success = Successfully added product {0}
+products.form = Product details
+products.list.navigation = Product List
+
 validation.ean.duplicate=A product with this EAN code does not exist
+validation.errors = Please correct the errors in the form

@@ -1,0 +1,20 @@
+@(order: Order)(implicit flash: Flash, lang: Lang)
+@import play.api.Play.current
+@import play.api.i18n.Messages.Implicits._
+@main(Messages("order.details", order.id)) {
+	<p>
+		<b>@Messages("order.details", order.id)</b><br>
+		<b>@Messages("address"): </b>@order.address<br>
+		<b>@Messages("date"): </b>@order.date<br>
+		<b>@Messages("status"): </b>@order.status<br>
+	<p>
+	<dl class="dl-horizontal">
+		@for(line <- order.lines) {
+			<dt>@Messages("ean"):</dt>
+			<dd>@line.ean</dd>
+			<dt>@Messages("quantity"):</dt>
+			<dd>@line.quantity</dd>
+		}
+	</dl>
+	<p><a href="@controllers.routes.Orders.changeStatus(order.id, false)" class="btn">@Messages("orders.rollback")</a></p>
+}

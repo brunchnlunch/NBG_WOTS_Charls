@@ -1,20 +1,19 @@
 package controllers
 
-import models.Product;
-import models.ProductPart;
-import play.api.Play.current
-import play.api.i18n.Messages
-import play.api.i18n.Messages.Implicits._
+import models.Product
+import models.ProductPart
 import play.api._
-import play.api.mvc._
-import play.api.mvc.{Action, Controller}
 import play.api.data.Form
 import play.api.data.Forms.{mapping, longNumber, nonEmptyText}
 import play.api.i18n.Messages
-import play.api.mvc.Flash
+import play.api.i18n.Messages.Implicits._
+import play.api.mvc._
+import play.api.mvc.{Action, Controller, Flash}
+import play.api.Play.current
+import models.Shelf
 
 class Products extends Controller {
-  private val productForm: Form[ProductPart] = Form(mapping("ean" -> longNumber, "quantity" -> longNumber)(ProductPart.apply)(ProductPart.unapply))
+  private val productForm: Form[ProductPart] = Form(mapping("ean" -> longNumber , "quantity" -> longNumber, "location" -> nonEmptyText)(ProductPart.apply)(ProductPart.unapply))
   
   def list = Action {
     implicit request =>
@@ -38,6 +37,7 @@ class Products extends Controller {
         },
         success = {
           damagedProduct => Product.damaged(damagedProduct)
+          Shelf.removeFromShelf(damagedProduct.location, damagedProduct.quantity)
           val message = Messages("products.damaged.success", damagedProduct.ean)
           Redirect(routes.Products.show(damagedProduct.ean)).flashing("success" -> message)
         }

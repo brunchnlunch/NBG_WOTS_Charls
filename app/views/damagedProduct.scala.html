@@ -11,6 +11,7 @@
 				@Messages("products.details", Messages("products.damaged"))
 			</legend>
 			@helper.inputText(productForm("ean"))
+			@helper.inputText(productForm("location"))
 			@helper.inputText(productForm("quantity"))
 		</fieldset>
 		<p><input type="submit" class="btn primary" value='@Messages("products.damaged.submit")'></p>

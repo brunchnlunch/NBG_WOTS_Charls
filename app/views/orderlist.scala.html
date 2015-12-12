@@ -1,0 +1,16 @@
+@(orders: List[Order])(implicit flash: Flash, lang: Lang)
+@import play.api.Play.current
+@import play.api.i18n.Messages
+@import play.api.i18n.Messages.Implicits._
+@main(Messages("application.name")) {
+	<dl class="orders">
+		@for(order <- orders) {
+			<dt><a href="@controllers.routes.Orders.show(order.id)">Order Id: @order.id</a></dt>
+			<dd>@order.address</dd>
+			<dd>@order.date</dd>
+			<dd>@order.status</dd>
+		}	
+	</dl>
+	<p><a href="@controllers.routes.Orders.getOrder()" class="btn">@Messages("orders.get")</a></p>
+	<p><a href="@controllers.routes.Dispatching.dispatchOrders()" class="btn">@Messages("orders.dispatch")</a></p>
+}
