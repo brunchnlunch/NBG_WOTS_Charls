@@ -3,10 +3,9 @@
 @import play.api.i18n.Messages.Implicits._
 @main(Messages("products.details", product.name)) {
 	<h2>
-		@barcode(product.ean)
 		@Messages("product.details", product.name)
 	</h2>
-	<dl class="dl-horizontal">
+	<dl class="dl-horizontal" style="width:400px;padding:20px">
 		<dt>@Messages("ean"):</dt>
 		<dd>@product.ean</dd>
 		<dt>@Messages("volume"):</dt>
@@ -14,4 +13,7 @@
 		<dt>@Messages("quantity"):</dt>
 		<dd>@product.quantity</dd>
 	</dl>
+	<h2 style="padding-bottom:70px">
+		@barcode(product.ean)
+	</h2>
 }

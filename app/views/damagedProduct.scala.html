@@ -4,16 +4,13 @@
 @import play.api.i18n.Messages.Implicits._
 @import play.api.mvc.Flash
 @main(Messages("products.form")) {
-	<h2>@Messages("products.fom")</h2>
+	<h2>@Messages("products.form")</h2>
 	@helper.form(action = routes.Products.damaged()) {
 		<fieldset>
-			<legend>
-				@Messages("products.details", Messages("products.damaged"))
-			</legend>
 			@helper.inputText(productForm("ean"))
 			@helper.inputText(productForm("location"))
 			@helper.inputText(productForm("quantity"))
 		</fieldset>
-		<p><input type="submit" class="btn primary" value='@Messages("products.damaged.submit")'></p>
+		<p style="padding-bottom:70px"><input type="submit" class="btn primary" value='@Messages("products.damaged.submit")'></p>
 	}	
 }

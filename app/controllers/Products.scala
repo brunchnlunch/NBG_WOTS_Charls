@@ -1,3 +1,4 @@
+
 package controllers
 
 import models.Product
@@ -36,7 +37,7 @@ class Products extends Controller {
           form => Redirect(routes.Products.damagedProduct()).flashing(Flash(form.data) + ("error" -> Messages("validation.errors")))
         },
         success = {
-          damagedProduct => Product.damaged(damagedProduct)
+          damagedProduct => Product.decreaseQuantity(damagedProduct)
           Shelf.removeFromShelf(damagedProduct.location, damagedProduct.quantity)
           val message = Messages("products.damaged.success", damagedProduct.ean)
           Redirect(routes.Products.show(damagedProduct.ean)).flashing("success" -> message)

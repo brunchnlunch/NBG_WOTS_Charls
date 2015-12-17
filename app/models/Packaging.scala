@@ -7,8 +7,14 @@ object Packaging {
       Packaging("B1", 12), Packaging("B2", 24), Packaging("B3", 36), Packaging("B4", 48),
       Packaging("C1", 50), Packaging("C2", 100), Packaging("C3", 150), Packaging("C4", 200))
       
+  /**
+   * Returns the list of boxes ordered by smallest volume to greatest.
+   */
   def findAll = boxes.toList.sortBy(_.volume)
   
+  /**
+   * Given the total volume of an order returns the smallest number of boxes with the least volume to pack all the products.
+   */
   def selectBox(volume: Double): List[Packaging] ={
     def selectEachBox(volume: Double, boxList: List[Packaging]): List[Packaging] ={
       if(volume.<=(0))
@@ -23,6 +29,9 @@ object Packaging {
     selectEachBox(volume, List.empty[Packaging])  
   }
   
+  /**
+   * Given the volume of products that you wish to pack, returns the smallest box which will contain the given volume
+   */
   def addBox(volume: Double): Packaging ={
     def checkboxes(boxes: List[Packaging]): Packaging ={
       if(boxes.isEmpty)

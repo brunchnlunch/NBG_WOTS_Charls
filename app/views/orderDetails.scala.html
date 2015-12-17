@@ -8,7 +8,7 @@
 		<b>@Messages("date"): </b>@order.date<br>
 		<b>@Messages("status"): </b>@order.status<br>
 	<p>
-	<dl class="dl-horizontal">
+	<dl class="dl-horizontal" style="width:400px;padding:20px">
 		@for(line <- order.lines) {
 			<dt>@Messages("ean"):</dt>
 			<dd>@line.ean</dd>

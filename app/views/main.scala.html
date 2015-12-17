@@ -12,27 +12,26 @@
 </head>
 <body>
 	<div class="screenshot">
-		<div class="navbar navbar-fixed-top">
-			<div class="navbar-inner">
-				<div class="container">
-					<a class="brand" href="@routes.Application.index()">@Messages("application.name")</a>
-					<ul class="nav">
-						<li class="divider-vertical"></li>
-						<li class="active">
-							<a href="@routes.Products.list()">@Messages("products.list.navigation")</a>
-						</li>
-						<li class="active">
-							<a href="@routes.Products.damagedProduct()">@Messages("products.damaged.command")</a>
-						</li>
-						<li class="active">
-							<a href="@routes.Orders.list()">@Messages("orders.list.navigation")</a>
-						</li>
-						<li class="divider-vertical"></li>
-					</ul>
-				</div>
-			</div>
+		<div class="title" >
+			<center>
+				@Messages("application.name")
+			</center>
 		</div>
-		<div class="container">
+		<div class="nav">
+			<ul class="bar items">
+				<li class="active">
+					<a href="@routes.Products.list()"><b>@Messages("products.list.navigation")</b></a>
+				</li>
+				<li class="active">
+					<a href="@routes.Products.damagedProduct()"><b>@Messages("products.damaged.command")</b></a>
+				</li>
+				<li class="active">
+					<a href="@routes.Orders.list()"><b>@Messages("orders.list.navigation")</b></a>
+				</li>
+			</ul>
+		</div>
+		
+		<div class="container"  style="margin:0 auto;width:380px;margin-top:30px">   
 			@if(flash.get("success").isDefined){
 				<div class="alert alert-success">
 					@flash.get("success")
@@ -43,8 +42,14 @@
 					@flash.get("error")
 				</div>
 			}
-			@content
 		</div>
+		
+		<div class="content-container">
+			<center>
+				@content
+			</center>
+		</div>
+		
 	</div>
 </body>
 </html>

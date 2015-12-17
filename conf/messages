@@ -1,4 +1,4 @@
-application.name = WOTS
+application.name = Warehouse Order Tracking System
 
 address = Address
 box = Box Type

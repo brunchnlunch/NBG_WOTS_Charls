@@ -1,4 +1,4 @@
-name := """NBGardensWOTS"""
+name := """NBG_WOTS_Charles"""
 
 version := "1.0-SNAPSHOT"
 
